@@ -5,8 +5,7 @@
 
   <p>
   Newest users:
-  <%= raw @newest.map{|u| "<a href=\"/u/#{u.username}\" class=\"" <<
-    (u.is_new?? "new_user" : "") << "\">#{u.username}</a> " <<
+  <%= raw @newest.map{|u| "<a class=\"new_user\"> Anonymous</a> " <<
     "(#{u.karma})" }.join(", ") %>
   </p>
 
@@ -18,13 +17,12 @@
     <% while subtree %>
       <% if (user = subtree.pop) %>
         <li>
-          <a href="/u/<%= user.username %>"
+          <a 
+            class="new_user"
             <% if !user.is_active? %>
               class="inactive_user"
-            <% elsif user.is_new? %>
-              class="new_user"
             <% end %>
-            ><%= user.username %></a>&nbsp;(<%= user.karma %>)
+            >Anonymous</a>&nbsp;(<%= user.karma %>)
           <% if user.is_admin? %>
             (administrator)
           <% elsif user.is_moderator? %>
