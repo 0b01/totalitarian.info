@@ -8,7 +8,7 @@ gem "mysql2", ">= 0.3.14"
 
 gem "pg"
 
-#gem "thinking-sphinx", "~> 3.1.2"
+gem "thinking-sphinx", "~> 3.1.2"
 
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
