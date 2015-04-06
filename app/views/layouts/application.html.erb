@@ -64,7 +64,7 @@
       <div id="headerright">
         <span class="headerlinks">
         <a href="/filters" <%= @cur_url == "/filters" ?
-          raw("class=\"cur_url\"") : "" %>>Filters</a>
+          raw("class=\"cur_url\"") : "" %>>Tags</a>
         <% if @user %>
           <% if (count = @user.unread_message_count) > 0 %>
             <a href="/messages" class="new_messages <%= @cur_url == "/messages" ?
