@@ -83,7 +83,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
           <img src="<%= story.user.avatar_url(16) %>" class="avatar">
         <% end %>
         by
-        <a <% if story.user.is_new? %> class="new_user" <% end %>>Anonymous</a>
+        <a class="new_user" >Anonymous</a>
 
         <%= time_ago_in_words_label(story.created_at, :strip_about => true) %>
           ago
