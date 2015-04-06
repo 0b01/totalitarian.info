@@ -405,7 +405,20 @@ div.voters div.score {
 }
 
 li.story div.voters div.score {
-	font-size: 9.5pt;
+    background-color: #D6DAF0;
+    border-right: 1px solid #B7C5D9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+    border-color: -moz-use-text-color #B7C5D9 #B7C5D9 -moz-use-text-color;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    display: table;
+    padding: 2px;
+
+    font-size: 9.5pt;
 	margin-top: 2px;
 }
 
@@ -899,11 +912,12 @@ table.data td p:last-child {
 	border: 0;
 	margin: 0 40px;
 	padding: 0;
+    background-color: #EEF2FF;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
+    background-color: #EEF2FF;
 	border-top: 0px;
-	background-color: #eaeaea;
 	padding: 1em;
 }
 .box_submitter input {
@@ -911,7 +925,6 @@ table.data td p:last-child {
 }
 
 .box .legend {
-	background-color: white;
 	margin-bottom: 1em;
 	padding: 0;
 	font-weight: bold;
