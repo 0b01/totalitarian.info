@@ -1,0 +1,1 @@
+Lobsters::Application.config.secret_key_base = 'b8b3ce5a51b6d17fb2a58dde898e6ff71151174f9c208581867cd752d7456a6942f9271fb97aa51dd40d8d94a6c19036413f3337965efa93e71d2ae8dcdbf5a9'

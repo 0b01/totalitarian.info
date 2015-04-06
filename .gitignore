@@ -24,12 +24,12 @@ app/views/home/privacy.*
 app/views/home/about.*
 
 # files added in production
-lib/tasks/deploy.rake
-config/initializers/production.rb
-config/database.yml
-config/initializers/secret_token.rb
-config/*.sphinx.conf
-config/unicorn.conf.rb
+#lib/tasks/deploy.rake
+#config/initializers/production.rb
+#config/database.yml
+#config/initializers/secret_token.rb
+#config/*.sphinx.conf
+#config/unicorn.conf.rb
 
 # bbs symlinks into ../lobsters-bbs
 app/controllers/bbs_controller.rb
