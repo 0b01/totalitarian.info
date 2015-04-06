@@ -34,12 +34,11 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
         <img src="<%= comment.user.avatar_url(16) %>" class="avatar">
       <% end %>
 
-      <a
-        class="new_user"
-      <% if !comment.user.is_active? %>
+    <a class="new_user"
+    <% if !comment.user.is_active? %>
         class="inactive_user"
-      <& end %>
-        >Anonymous</a>
+    <% end %>
+    >Anonymous</a>
 
       <% if comment.hat %>
         <%= comment.hat.to_html_label %>
