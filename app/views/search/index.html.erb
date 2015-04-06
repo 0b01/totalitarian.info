@@ -1,8 +1,7 @@
 <div class="box">
-<!--  <div class="legend">
+  <div class="legend">
     Search
   </div>
-  -->
   <%= form_tag "/search", :method => :get do %>
     <div class="boxline">
       <%= text_field_tag "q", @search.q, { :size => 40 }.
