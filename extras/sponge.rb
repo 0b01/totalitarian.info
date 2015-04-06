@@ -120,8 +120,7 @@ class Sponge
     end
 
     if uri.scheme == "https"
-      # host.use_ssl = true
-      host.use_ssl = false
+      host.use_ssl = true
       host.verify_mode = OpenSSL::SSL::VERIFY_NONE
     end
 
