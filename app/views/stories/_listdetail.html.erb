@@ -32,7 +32,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% end %>
       </span>
       <% if story.domain.present? %>
-        <div class="domain"><%= break_long_words(story.domain) %></div>
+        <a class="domain"><%= break_long_words(story.domain) %></a>
       <% end %>
 
       <% if defined?(single_story) && single_story %>
@@ -51,8 +51,8 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             <% end %>
           </span>
           <% if ms.domain.present? %>
-            <div class="domain" ><%=
-              break_long_words(ms.domain) %></div>
+            <a class="domain" ><%=
+              break_long_words(ms.domain) %></a>
           <% end %>
           <span class="byline">
             by
