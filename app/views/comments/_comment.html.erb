@@ -38,6 +38,7 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
         class="new_user"
       <% if !comment.user.is_active? %>
         class="inactive_user"
+      <& end %>
         >Anonymous</a>
 
       <% if comment.hat %>
