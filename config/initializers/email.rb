@@ -7,6 +7,6 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :user_name      => ENV['SENDGRID_USERNAME'],
   :password       => ENV['SENDGRID_PASSWORD'],
-  :enable_starttls_auto => true
+  :enable_starttls_auto => true,
   :domain => Rails.application.domain,
 }
