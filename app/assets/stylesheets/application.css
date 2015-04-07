@@ -813,7 +813,6 @@ ul.root {
 ul.user_tree, ul.user_tree ul {
 	list-style-type: none;
 	/* vline */
-	background: black;
 	margin: 0;
 	padding: 0;
 }
