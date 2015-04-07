@@ -72,7 +72,7 @@
             raw("class=\"new_user\"") : "" %>>Anonymous
           </a>
 
-          <%= link_to "Logout", { :controller => "login", :action => "logout" }%>
+          <%= link_to "Logout", { :controller => "login", :action => "logout",:method => "post" }%>
         <% else %>
           <a href="/login">Login</a>
         <% end %>
