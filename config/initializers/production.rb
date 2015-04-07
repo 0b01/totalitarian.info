@@ -1,6 +1,6 @@
 class << Rails.application
   def domain
-    "totalitarianism.herokuapp.com"
+    "totalitarian.info"
   end
 
   def name
