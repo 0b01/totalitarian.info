@@ -1,7 +1,7 @@
 class InvitationRequest < ActiveRecord::Base
   #validates :name, :presence => true
   validates :email, :format => { :with => /\A[^@ ]+@[^@ ]+\.[^@ ]+\Z/ }
-  validates :memo, :format => {}# :with => /https?:\/\// }
+  #validates :memo, :format => {}# :with => /https?:\/\// }
 
   before_validation :create_code
   after_create :send_email
