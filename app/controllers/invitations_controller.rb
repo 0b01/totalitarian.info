@@ -40,9 +40,9 @@ class InvitationsController < ApplicationController
       i.send_email
       flash[:success] = "Successfully e-mailed invitation to " <<
         params[:email].to_s << "."
-    rescue
-      flash[:error] = "Could not send invitation, verify the e-mail " <<
-        "address is valid."
+    rescue Exception => e
+      flash[:error] = e.message #"Could not send invitation, verify the e-mail " <<
+        #"address is valid."
     end
 
     if params[:return_home]
