@@ -21,7 +21,6 @@
   <% if @user %>
     <%= javascript_include_tag "application" %>
     <script>
-        //<%= @anon.to_s %>
       Lobsters.anon = null;
       Lobsters.curUser = '<%= @user.id %>';
     </script>

@@ -220,14 +220,22 @@ class StoriesController < ApplicationController
     if !(story = find_story)
       return render :text => "can't find story", :status => 400
     end
-
-    Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
-      nil, @user.id, nil)
+    if @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
+                                                            nil, 0, nil) # user.id = 0 when anon 
+    elsif @user
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
+        nil, @user.id, nil)
+    end
 
     render :text => "ok"
   end
 
   def downvote
+    if @anon 
+      return render :text => "cannot downvote as Anonymous", :status => 400
+    end
+
     if !(story = find_story)
       return render :text => "can't find story", :status => 400
     end
@@ -247,6 +255,9 @@ class StoriesController < ApplicationController
   end
 
   def hide
+    if @anon
+      return render :text => "can't hide story as anonymous", :status => 400
+    end
     if !(story = find_story)
       return render :text => "can't find story", :status => 400
     end
@@ -257,6 +268,9 @@ class StoriesController < ApplicationController
   end
 
   def unhide
+    if @anon
+      return render :text => "can't unhide story as anonymous", :status => 400
+    end
     if !(story = find_story)
       return render :text => "can't find story", :status => 400
     end
