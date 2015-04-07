@@ -38,7 +38,7 @@
           [ 255, (@traffic * 7).floor + 50.0 ].min, 0, 0) %>;" href="/"
           title="<%= Rails.application.name %> (Current traffic: <%= @traffic.to_i %>)"></a>
         <% links = {
-          "/" => Rails.application.name,
+          "/" => "Totalitarian",
           "/recent" => "Recent",
           "/comments" => "Comments"
         } %>
@@ -79,8 +79,8 @@
           <% end %>
 
           <a href="/settings" <%= @cur_url == "/settings" ?
-            raw("class=\"cur_url\"") : "" %>><%= @user.username %>
-            (<%= @user.karma %>)</a>
+            raw("class=\"new_user\"") : "" %>>Anonymous
+          </a>
 
           <%= link_to "Logout", { :controller => "login", :action => "logout" },
             :data => { :confirm => "Are you sure you want to logout?" },
