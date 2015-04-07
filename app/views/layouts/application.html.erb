@@ -71,8 +71,10 @@
           <a class="new_user" href="/settings" <%= @cur_url == "/settings" ?
             raw("class=\"new_user\"") : "" %>>Anonymous
           </a>
+          <%= link_to "Logout", { :controller => "login", :action => "logout" },
+          :data => { :confirm => "Are you sure you want to logout?" },
+          :method => "post" %>
 
-          <%= link_to "Logout", { :controller => "login", :action => "logout",:method => "post" }%>
         <% else %>
           <a href="/login">Login</a>
         <% end %>
