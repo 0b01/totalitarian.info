@@ -1,6 +1,6 @@
 class << Rails.application
   def domain
-    "totalitarian.info"
+    "https://www.totalitarian.info"
   end
 
   def name
