@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       render :action => "about"
     rescue
       render :text => "<div class=\"box wide\">" <<
-        "A mystery." <<
+        "totalitarian.info is an anonymous link aggregator" <<
         "</div>", :layout => "application"
     end
   end
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       render :action => "privacy"
     rescue
       render :text => "<div class=\"box wide\">" <<
-        "You apparently have no privacy." <<
+        "As long as we are not hacked, you can remain anonymous." <<
         "</div>", :layout => "application"
     end
   end

@@ -3,12 +3,6 @@
   <strong><%= @title %> (<%= @user_count %>)</strong>
   </p>
 
-  <p>
-  Newest users:
-  <%= raw @newest.map{|u| "<a class=\"new_user\"> Anonymous</a> " <<
-    "(#{u.karma})" }.join(", ") %>
-  </p>
-
   <ul class="root">
 
     <% subtree = @users_by_parent[nil] %>
@@ -22,7 +16,7 @@
             <% if !user.is_active? %>
               class="inactive_user"
             <% end %>
-            >Anonymous</a>&nbsp;(<%= user.karma %>)
+            >Anonymous</a>&nbsp;
           <% if user.is_admin? %>
             (administrator)
           <% elsif user.is_moderator? %>

@@ -265,7 +265,7 @@ class Comment < ActiveRecord::Base
   def gone_text
     if self.is_moderated?
       "Thread removed by moderator " <<
-        self.moderation.try(:moderator).try(:username).to_s << ": " <<
+        ": " <<
         (self.moderation.try(:reason) || "No reason given")
     else
       "Comment removed by author"
