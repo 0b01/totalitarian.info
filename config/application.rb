@@ -44,7 +44,7 @@ class << Rails.application
   end
 
   def domain
-    "example.com"
+    "totalitarian.info"
   end
 
   def name
@@ -53,7 +53,7 @@ class << Rails.application
 
   def root_url
     Rails.application.routes.url_helpers.root_url({
-      :host => "www" << Rails.application.domain,
+      :host => "www." << Rails.application.domain,
       :protocol => Rails.application.ssl? ? "https" : "http",
     })
   end
@@ -67,7 +67,6 @@ class << Rails.application
   # config.force_ssl be on)
   def ssl?
     true
-    # false
   end
 end
 
