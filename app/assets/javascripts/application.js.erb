@@ -296,7 +296,7 @@ $(document).ready(function() {
   }),
 
   $(document).on("click", "a.comment_replier", function() {
-    if ((!Lobsters.curUser) || (!Lobsters.anon))
+      if ((!Lobsters.curUser) || (!Lobsters.anon)){
       Lobsters.bounceToLogin();
       return false;
     }
