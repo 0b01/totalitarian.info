@@ -222,7 +222,7 @@ class StoriesController < ApplicationController
     end
     if @anon
       Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
-                                                            nil, 0, nil) # user.id = 0 when anon 
+                                                            nil, 1, nil) # user.id = 1 when anon 
     elsif @user
       Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
         nil, @user.id, nil)
