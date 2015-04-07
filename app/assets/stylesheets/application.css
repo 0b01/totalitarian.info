@@ -15,7 +15,7 @@ html {
 body, textarea, input, button {
 	font-family: "helvetica neue", arial, sans-serif;
 	font-size: 9.5pt;
-	background-color: #D4D4D4;
+	background-color: #63FBBA;
 }
 
 a {
@@ -261,7 +261,7 @@ div#inside {
 }
 
 #l_holder {
-	background: url(/apple-touch-icon.png) no-repeat;
+	background: black no-repeat;
 	background-position: center;
 	float: left;
 	display: block;
@@ -813,7 +813,7 @@ ul.root {
 ul.user_tree, ul.user_tree ul {
 	list-style-type: none;
 	/* vline */
-	background: url(/apple-touch-icon.png);
+	background: black;
 	margin: 0;
 	padding: 0;
 }
@@ -916,11 +916,11 @@ table.data td p:last-child {
 	border: 0;
 	margin: 0 40px;
 	padding: 0;
-    background-color: #D4D4D4;
+    background-color: #63FBBA;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
-    background-color: #D4D4D4;
+    background-color: #63FBBA;
 	border-top: 0px;
 	padding: 1em;
 }
