@@ -261,7 +261,7 @@ div#inside {
 }
 
 #l_holder {
-	background: url(/favicon.ico) no-repeat;
+	background: url(/apple-touch-icon.png) no-repeat;
 	background-position: center;
 	float: left;
 	display: block;
@@ -813,7 +813,7 @@ ul.root {
 ul.user_tree, ul.user_tree ul {
 	list-style-type: none;
 	/* vline */
-	background: url(/favicon.ico);
+	background: url(/apple-touch-icon.png);
 	margin: 0;
 	padding: 0;
 }
