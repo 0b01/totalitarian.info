@@ -11,13 +11,14 @@ class ApplicationController < ActionController::Base
   TAG_FILTER_COOKIE = :tag_filters
 
   def authenticate_user
-    if session[:u] &&
-    (user = User.where(:session_token => session[:u].to_s).first) &&
-    user.is_active?
+    if session[:u] && (user = User.where(:session_token => session[:u].to_s).first) && user.is_active?
       @user = user
       Rails.logger.info "  Logged in as user #{@user.id} (#{@user.username})"
+    else
+      @anon = true
+      Rails.logger.info "  Not logged in. Anonymous."
     end
-
+    
     true
   end
 
@@ -78,7 +79,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in_user
-    if @user
+    if @user or @anon
       true
     else
       if request.get?
@@ -90,7 +91,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in_user_or_400
-    if @user
+    if @user or @anon
       true
     else
       render :text => "not logged in", :status => 400

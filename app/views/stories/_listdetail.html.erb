@@ -5,7 +5,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
 <%= story.is_expired? ? "expired" : "" %>">
 <div class="story_liner">
   <div class="voters">
-    <% if @user %>
+    <% if @user or @anon %>
       <a class="upvoter"></a>
     <% else %>
       <%= link_to "", login_path, :class => "upvoter" %>
@@ -14,7 +14,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
   </div>
   <div class="details">
     <span class="link">
-      <% if story.can_be_seen_by_user?(@user) %>
+      <% if story.can_be_seen_by_user?(@user) or @anon %>
         <a href="<%= story.url_or_comments_path %>"><%=
           break_long_words(story.title) %></a>
       <% end %>
@@ -23,7 +23,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
           "original submitter" %>]
       <% end %>
     </span>
-    <% if story.can_be_seen_by_user?(@user) %>
+    <% if story.can_be_seen_by_user?(@user) or @anon %>
       <span class="tags">
         <% story.sorted_taggings.each do |tagging| %>
           <a href="<%= tag_path(tagging.tag.tag) %>"
