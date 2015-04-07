@@ -50,6 +50,8 @@
         <% if @user %>
           <% links.merge!({ "/threads" => "Your Threads",
             "/stories/new" => "Submit Story" }) %>
+        <%elsif @anon%>
+          <% links.merge!({ "/stories/new" => "Submit Story" }) %>
         <% end %>
 
 
@@ -73,7 +75,6 @@
         <a href="/filters" <%= @cur_url == "/filters" ?
           raw("class=\"cur_url\"") : "" %>>Tags</a>
         <% if @user %>
-
           <a class="new_user" href="/settings" <%= @cur_url == "/settings" ?
             raw("class=\"new_user\"") : "" %>>Anonymous
           </a>
