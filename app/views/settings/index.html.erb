@@ -1,7 +1,4 @@
 <div class="box wide">
-  <div class="legend right">
-    <a href="/u/<%= @user.username %>">View Profile</a>
-  </div>
   <div class="legend">
     Account Settings
   </div>
@@ -14,7 +11,7 @@
       <%= f.label :username, "Username:", :class => "required" %>
       <%= f.text_field :username, :size => 15 %>
       <span class="hint">
-        <tt><%= User.username_regex %></tt>
+        <tt>visible to you and you only, <%= User.username_regex %></tt>
       </span>
     </div>
 
@@ -171,16 +168,6 @@
     </div>
 
     <br>
-
-    <div class="legend">
-      Miscellaneous Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :show_avatars, "Show User Avatars:", :class => "required" %>
-      <%= f.check_box :show_avatars %>
-    </div>
-
 
     <br>
     <%= f.submit "Save All Settings" %>

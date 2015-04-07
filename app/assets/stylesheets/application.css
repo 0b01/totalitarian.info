@@ -455,7 +455,7 @@ li.story {
 }
 ol.stories li.story div.story_liner {
     
-    background-color: #D6DAF0;
+    background-color: #DAEFFF;
     border-right: 1px solid #B7C5D9;
     border-width: medium 1px 1px medium;
     border-style: none solid solid none;
@@ -467,7 +467,8 @@ ol.stories li.story div.story_liner {
     border-image: none;
     display: table;
     padding: 2px;
-	
+    margin-top: 5px;
+    margin-bottom: 5px;
     
     padding-top: 0.4em;
 	padding-bottom: 0.4em;
