@@ -21,7 +21,14 @@
   <% if @user %>
     <%= javascript_include_tag "application" %>
     <script>
+        //<%= @anon.to_s %>
+      Lobsters.anon = null;
       Lobsters.curUser = '<%= @user.id %>';
+    </script>
+  <% elsif @anon %>
+    <%= javascript_include_tag "application" %>
+    <script>
+        Lobsters.anon = '1';
     </script>
   <% end %>
   <%= csrf_meta_tags %>
