@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+function choose(choices) {
+  var index = Math.floor(Math.random() * choices.length);
+  return choices[index];
+} 
+function corpus(){
+  return choose(
+          [
+          'not found',
+          'john henry was a steel driving man',
+          '\'DROP database "totalitarian";COMMIT; ',
+          'git revert',
+          'rm -rf /',
+          'back to reddit',
+          'back to 4chan'
+          ]
+          )
+}
+window.onload = function () {
+    document.getElementById('txt').innerHTML = '404 - ' + corpus();
+}    
+    </script>
+<style>
+body, textarea, input, button {
+  font-family: "helvetica neue",arial,sans-serif;
+  font-size: 9.5pt;
+  background-color: #DAEFFF;
+}
+</style>
   <title>404</title>
 </head>
 <body>
-  <h1>gone fishin'</h1>
+    <h1 id="txt" style="font-size:100px">404</h1>
 </body>
 </html>
