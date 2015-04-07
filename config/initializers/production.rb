@@ -4,7 +4,7 @@ class << Rails.application
   end
 
   def name
-    "totalitarian.info"
+    "totalitarian.info $ Anonymous Link Aggregator"
   end
 end
 

@@ -47,8 +47,8 @@ Lobsters::Application.routes.draw do
     get "/t/:tag" => "home#tagged", :as => "tag", :format => /html|rss/
     get "/t/:tag/page/:page" => "home#tagged"
 
-    get "/search" => "search#index"
-    get "/search/:q" => "search#index"
+    # get "/search" => "search#index"
+    # get "/search/:q" => "search#index"
 
     resources :stories do
       post "upvote"
@@ -114,8 +114,9 @@ Lobsters::Application.routes.draw do
     get "/moderations" => "moderations#index"
     get "/moderations/page/:page" => "moderations#index"
 
-    get "/privacy" => "home#privacy"
+    #get "/privacy" => "home#privacy"
     get "/about" => "home#about"
+    get "/index" => "home#index"
 
     if defined?(BbsController) || Rails.env.development?
       get "/bbs" => "bbs#index"
