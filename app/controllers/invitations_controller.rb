@@ -41,7 +41,7 @@ class InvitationsController < ApplicationController
       flash[:success] = "Successfully e-mailed invitation to " <<
         params[:email].to_s << "."
     rescue Exception => e
-      flash[:error] = e.backtrace #"Could not send invitation, verify the e-mail " <<
+      flash[:error] = e.backtrace.join("\n\t") #"Could not send invitation, verify the e-mail " <<
         #"address is valid."
     end
 
