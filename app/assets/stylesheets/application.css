@@ -15,7 +15,7 @@ html {
 body, textarea, input, button {
 	font-family: "helvetica neue", arial, sans-serif;
 	font-size: 9.5pt;
-	background-color: #EEF2FF;
+	background-color: #D4D4D4;
 }
 
 a {
@@ -916,11 +916,11 @@ table.data td p:last-child {
 	border: 0;
 	margin: 0 40px;
 	padding: 0;
-    background-color: #EEF2FF;
+    background-color: #D4D4D4;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
-    background-color: #EEF2FF;
+    background-color: #D4D4D4;
 	border-top: 0px;
 	padding: 1em;
 }
