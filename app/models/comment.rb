@@ -341,8 +341,8 @@ class Comment < ActiveRecord::Base
   end
 
   def record_initial_upvote
-    # Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.story_id,
-    #   self.id, self.user_id, nil, false)
+    Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.story_id,
+      self.id, nil, nil, false)
 
     self.story.update_comments_count!
   end
