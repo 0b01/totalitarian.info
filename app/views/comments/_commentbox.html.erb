@@ -21,7 +21,7 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
 
     <p></p>
 
-    <div class="markdown_help_toggler">
+    <div class="markdown_help_toggler byline">
         <div class="markdown_help_label">
           Markdown formatting available
         </div>
@@ -39,6 +39,11 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
         &nbsp;
         <%= button_tag "Cancel", :class => "comment-cancel",
           :type => "button" %>
+      <% end %>
+
+      <% if @user %>
+        <label>Posting anonymously</label>
+        <input id="anon" type="checkbox"></input>
       <% end %>
 
       <% if @user && @user.hats.any? %>
