@@ -237,7 +237,7 @@ var _Lobsters = Class.extend({
     scoreDiv.innerHTML = score;
 
     if (state)
-        $.cookie(li.attr("data-shortid"), state); // set cookie 
+        $.cookie(li.attr("data-shortid"), score); // set cookie 
     else
         $.removeCookie(li.attr("data-shortid"));
 
@@ -361,14 +361,14 @@ $(document).ready(function() {
   var stories = document.getElementsByClassName('story'); 
   for (var i = 0; i < stories.length; i++){
       var datashortid = stories[i].getAttribute('data-shortid');
-      if ($.cookie(datashortid) == 1){
+      if ($.cookie(datashortid) ){
           stories[i].className += 'upvoted';
       }
   }
   var comments = document.getElementsByClassName('comment'); 
   for (var i = 0; i < comments.length; i++){
       var datashortid = comments[i].getAttribute('data-shortid');
-      if ($.cookie(datashortid) == 1){
+      if ($.cookie(datashortid) ){
           comments[i].className += 'upvoted';
       }
   }
