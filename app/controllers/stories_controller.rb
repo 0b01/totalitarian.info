@@ -222,7 +222,7 @@ class StoriesController < ApplicationController
     end
     if @anon #XXX: check repeated ip
       Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
-                                                            nil, nil, nil, true)
+                                                            nil, nil, nil)
       return render :text => 'voted as anon ip addr :  ' << @anon[:ip]
     elsif @user
       Vote.vote_thusly_on_story_or_comment_for_user_because(1, story.id,
