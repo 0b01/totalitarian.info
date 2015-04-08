@@ -22,7 +22,6 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
     <p></p>
 
     <div class="markdown_help_toggler">
-      <% if @user || @anon %>
         <div class="markdown_help_label">
           Markdown formatting available
         </div>
@@ -30,11 +29,9 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
         style="display: none;">
           [M&darr;]
         </div>
-      <% end %>
 
       <%= button_tag "#{comment.new_record?? "Post" : "Update"}",
-        :class => "comment-post", :type => "button",
-      %>
+        :class => "comment-post", :type => "button"%>
       &nbsp;
       <%= button_tag "Preview", :class => "comment-preview",
         :type => "button" %>
@@ -55,9 +52,7 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
 
       <div style="clear: both;"></div>
 
-      <% if @user || @anon %>
         <%= render :partial => "global/markdownhelp" %>
-      <% end %>
     </div>
   </div>
 
