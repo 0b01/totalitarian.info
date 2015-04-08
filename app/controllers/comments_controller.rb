@@ -35,17 +35,32 @@ class CommentsController < ApplicationController
     end
 
     # prevent double-clicks of the post button
-    if params[:preview].blank? &&
-    (pc = Comment.where(:story_id => story.id, :user_id => @user.id,
-      :parent_comment_id => comment.parent_comment_id).first)
-      if (Time.now - pc.created_at) < 5.minutes
-        comment.errors.add(:comment, "^You have already posted a comment " <<
-          "here recently.")
+    if @user
+      if params[:preview].blank? &&
+      (pc = Comment.where(:story_id => story.id, :user_id => @user.id.to_s,
+        :parent_comment_id => comment.parent_comment_id).first)
+        if (Time.now - pc.created_at) < 5.minutes
+          comment.errors.add(:comment, "^You have already posted a comment " <<
+            "here recently.")
 
-        return render :partial => "commentbox", :layout => false,
-          :content_type => "text/html", :locals => { :comment => comment }
+          return render :partial => "commentbox", :layout => false,
+            :content_type => "text/html", :locals => { :comment => comment }
+        end
+      end
+    elsif @anon
+      if params[:preview].blank? &&
+      (pc = Comment.where(:story_id => story.id, :user_id => @anon[:ip].to_s,
+        :parent_comment_id => comment.parent_comment_id).first)
+        if (Time.now - pc.created_at) < 5.minutes
+          comment.errors.add(:comment, "^You have already posted a comment " <<
+            "here recently.")
+
+          return render :partial => "commentbox", :layout => false,
+            :content_type => "text/html", :locals => { :comment => comment }
+        end
       end
     end
+
 
     if comment.valid? && params[:preview].blank? && comment.save
       comment.current_vote = { :vote => 1 }

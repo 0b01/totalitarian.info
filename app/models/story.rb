@@ -150,7 +150,7 @@ class Story < ActiveRecord::Base
 
     # give a story's comment votes some weight, but ignore the story
     # submitter's own comments
-    cpoints = self.comments.where("user_id <> ?", self.user_id).
+    cpoints = self.comments.where("user_id != '?'", self.user_id).
       select(:upvotes, :downvotes).map{|c| c.upvotes + 1 - c.downvotes }.
       inject(&:+).to_i
 
