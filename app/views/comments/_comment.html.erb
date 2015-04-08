@@ -9,9 +9,11 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
   <%= comment.score <= -5 ? "negative_5" : "" %>">
   <% if !comment.is_gone? %>
     <div class="voters">
+      <% if @user %>
         <a class="upvoter"></a>
       <% else %>
         <%= link_to "", login_path, :class => "upvoter" %>
+      <% end %>
       <div class="score"><%= comment.score %></div>
       <% if @user && @user.can_downvote?(comment) %>
         <a class="downvoter"></a>
@@ -32,7 +34,7 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
         <img src="<%= comment.user.avatar_url(16) %>" class="avatar">
       <% end %>
 
-    <a class="new_user">Anonymous</a>
+      <a class="new_user">Anonymous</a>
 
       <% if comment.hat %>
         <%= comment.hat.to_html_label %>
@@ -56,12 +58,15 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
         <a href="<%= comment.url %>">link</a>
 
         <% if comment.is_editable_by_user?(@user) %>
+          |
           <a class="comment_editor">edit</a>
         <% end %>
 
         <% if comment.is_gone? && comment.is_undeletable_by_user?(@user) %>
+          |
           <a class="comment_undeletor">undelete</a>
         <% elsif !comment.is_gone? && comment.is_deletable_by_user?(@user) %>
+          |
           <a class="comment_deletor">delete</a>
         <% end %>
 
