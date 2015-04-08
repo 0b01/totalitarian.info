@@ -16,11 +16,12 @@ class CommentsController < ApplicationController
 
     comment = story.comments.build
     comment.comment = params[:comment].to_s
-    if @user
+    
+    if params[:anon] || @anon
+      comment.anon = true
+    else
       comment.user = @user
-    elsif @anon
-      comment.user = nil
-      comment.anon = params[:anon].to_s == "true"
+      comment.anon = false
     end
 
     if params[:hat_id] && @user.hats.where(:id => params[:hat_id])

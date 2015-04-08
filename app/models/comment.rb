@@ -31,9 +31,6 @@ class Comment < ActiveRecord::Base
     self.comment.to_s.strip == "" &&
       errors.add(:comment, "cannot be blank.")
 
-    ( self.user_id.blank? ) &&
-      self.anon = true
-
     self.story_id.blank? &&
       errors.add(:story_id, "cannot be blank.")
 
@@ -325,7 +322,7 @@ class Comment < ActiveRecord::Base
   end
 
   def mark_submitter
-    if self.user_id
+    if self.user
       Keystore.increment_value_for("user:#{self.user_id}:comments_posted")
     end
   end
