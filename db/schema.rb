@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150313040930) do
     t.datetime "updated_at"
     t.string   "short_id",           limit: 10,                           default: "",    null: false
     t.integer  "story_id",                                                                null: false
-    t.integer  "user_id",                                                                 null: false
+    t.integer  "user_id",
     t.integer  "parent_comment_id"
     t.integer  "thread_id"
     t.text     "comment",                                                                 null: false
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20150313040930) do
   add_index "users", ["username"], name: "username", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
-    t.integer "user_id",              null: false
+    t.integer "user_id",
     t.integer "story_id",             null: false
     t.integer "comment_id"
     t.integer "vote",       limit: 2, null: false
