@@ -354,7 +354,7 @@ var _Lobsters = Class.extend({
 var Lobsters = new _Lobsters();
 
 $(document).ready(function() {
-  var stories = document.getElementsByClassName('story').length; 
+  var stories = document.getElementsByClassName('story'); 
   for (var i = 0; i < stories.length; i++){
       var datashortid = stories[i].getAttribute('data-shortid');
       if ($.cookie(datashortid) == 1){
