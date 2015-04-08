@@ -82,7 +82,8 @@
           :data => { :confirm => "Are you sure you want to logout?" },
           :method => "post" %>
 
-        <% else %>
+        <% elsif @anon %>
+          <a class="new_user">Anonymous</a>
           <a href="/login">Login</a>
         <% end %>
         </span>

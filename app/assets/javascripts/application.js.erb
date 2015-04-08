@@ -236,7 +236,10 @@ var _Lobsters = Class.extend({
 
     scoreDiv.innerHTML = score;
 
-    $.cookie(li.attr("data-shortid"), state); // set cookie 
+    if (state)
+        $.cookie(li.attr("data-shortid"), state); // set cookie 
+    else
+        $.removeCookie(li.attr("data-shortid"));
 
     if (action == "upvote" || action == "unvote") {
       li.find(".reason").html("");
