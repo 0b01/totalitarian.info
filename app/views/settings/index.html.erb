@@ -30,14 +30,6 @@
     <div class="boxline">
       <%= f.label :email, "E-mail Address:", :class => "required" %>
       <%= f.text_field :email, :size => 40 %>
-      <span class="hint">
-        <a href="http://www.gravatar.com/" target="_blank">Gravatar</a>'ized
-      </span>
-    </div>
-
-    <div class="boxline">
-      <%= f.label :about, "About:", :class => "required" %>
-      <%= f.text_area :about, :size => "100x5", :style => "width: 600px;" %>
     </div>
 
     <div class="box">
@@ -61,18 +53,6 @@
 
     <div class="legend">
       Notification Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :pushover_user_key,
-        raw("<a href=\"https://pushover.net/\">Pushover</a>:"),
-        :class => "required" %>
-      <%= link_to((f.object.pushover_user_key.present??
-        "Manage Pushover Subscription" : "Subscribe With Pushover"),
-        "/settings/pushover", :class => "pushover_button", :method => :post) %>
-      <span class="hint">
-        For optional comment and message notifications below
-      </span>
     </div>
 
     <br>
