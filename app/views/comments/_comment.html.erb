@@ -9,7 +9,7 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
   <%= comment.score <= -5 ? "negative_5" : "" %>">
   <% if !comment.is_gone? %>
     <div class="voters">
-      <% if @user %>
+      <% if @user || @anon %>
         <a class="upvoter"></a>
       <% else %>
         <%= link_to "", login_path, :class => "upvoter" %>
