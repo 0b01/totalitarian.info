@@ -31,7 +31,7 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
         </div>
 
       <% if @user %>
-      <%= button_tag "#{comment.new_record?? "Post" : "Update"}",
+      <%= button_tag "#{comment.new_record?? "Post Anonymously" : "Update"}",
         :class => "comment-post-as-anon", :type => "button"%>
       &nbsp;
       <% end %>
