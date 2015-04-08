@@ -197,7 +197,7 @@ class CommentsController < ApplicationController
         comment.id, @user.id, params[:reason])
     elsif @anon
       Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
-        comment.id, nil )
+        comment.id, nil, nil )
     end
 
 
