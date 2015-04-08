@@ -209,10 +209,15 @@ class StoriesController < ApplicationController
     if !(story = find_story)
       return render :text => "can't find story", :status => 400
     end
-
-    Vote.vote_thusly_on_story_or_comment_for_user_because(0, story.id,
-      nil, @user.id, nil)
-
+    
+    if @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, story.id,
+        nil, nil, nil)
+      return render :text => "unvoted as anon ip addr:  " << @anon[:ip]
+    elsif @user 
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, story.id,
+        nil, @user.id, nil)
+    end
     render :text => "ok"
   end
 
