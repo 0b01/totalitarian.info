@@ -118,7 +118,9 @@ class CommentsController < ApplicationController
   end
 
   def delete
-    if !((comment = find_comment) && comment.is_deletable_by_user?(@user))
+    if !@user
+      return render :text => "Nice try anon", :status => 400
+    elsif !((comment = find_comment) && comment.is_deletable_by_user?(@user))
       return render :text => "can't find comment", :status => 400
     end
 
@@ -129,7 +131,9 @@ class CommentsController < ApplicationController
   end
 
   def undelete
-    if !((comment = find_comment) && comment.is_undeletable_by_user?(@user))
+    if !@user
+      return render :text => "Nice try anon", :status => 400
+    elsif !((comment = find_comment) && comment.is_undeletable_by_user?(@user))
       return render :text => "can't find comment", :status => 400
     end
 
@@ -140,7 +144,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if !((comment = find_comment) && comment.is_editable_by_user?(@user))
+    if !@user
+      return render :text => "Nice try anon", :status => 400
+    elsif !((comment = find_comment) && comment.is_editable_by_user?(@user))
       return render :text => "can't find comment", :status => 400
     end
 
@@ -308,10 +314,10 @@ private
 
   def find_comment
     comment = Comment.where(:short_id => params[:id]).first
-    if @user && comment
-      comment.current_vote = Vote.where(:user_id => @user.id,
-        :story_id => comment.story_id, :comment_id => comment.id).first
-    end
+    # if @user && comment
+    #   comment.current_vote = Vote.where(:user_id => @user.id,
+    #     :story_id => comment.story_id, :comment_id => comment.id).first
+    # end
 
     comment
   end
