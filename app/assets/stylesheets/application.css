@@ -476,6 +476,7 @@ ol.stories li.story div.story_liner {
 	clear: both;
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
+    color: white;
 }
 
 .comment a {
@@ -916,6 +917,7 @@ table.data td p:last-child {
 	margin: 0 40px;
 	padding: 0;
     background-color: #4D0E16;
+    color: white;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
