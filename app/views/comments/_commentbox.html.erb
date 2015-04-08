@@ -30,6 +30,12 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
           [M&darr;]
         </div>
 
+      <% if @user %>
+      <%= button_tag "#{comment.new_record?? "Post" : "Update"}",
+        :class => "comment-post-as-anon", :type => "button"%>
+      &nbsp;
+      <% end %>
+
       <%= button_tag "#{comment.new_record?? "Post" : "Update"}",
         :class => "comment-post", :type => "button"%>
       &nbsp;
@@ -41,10 +47,6 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
           :type => "button" %>
       <% end %>
 
-      <% if @user %>
-        <label>Posting anonymously</label>
-        <input id="anon" type="checkbox"></input>
-      <% end %>
 
       <% if @user && @user.hats.any? %>
         <div style="display: inline-block; margin-left: 1em;">
