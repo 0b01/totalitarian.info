@@ -354,12 +354,13 @@ var _Lobsters = Class.extend({
 var Lobsters = new _Lobsters();
 
 $(document).ready(function() {
-    for (var story in document.getElementsByClassName('story')){
-        var datashortid = story.getAttribute('data-shortid');
-        if ($.cookie(datashortid) == 1){
-            story.className += upvoted;
-        }
-    }
+  var stories = document.getElementsByClassName('story').length; 
+  for (var i = 0; i < stories.length; i++){
+      var datashortid = stories[i].getAttribute('data-shortid');
+      if ($.cookie(datashortid) == 1){
+          story.className += 'upvoted';
+      }
+  }
   
   $(".comment a.downvoter").click(function() {
     Lobsters.downvoteComment(this);
