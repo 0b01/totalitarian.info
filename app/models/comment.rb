@@ -31,9 +31,6 @@ class Comment < ActiveRecord::Base
     self.comment.to_s.strip == "" &&
       errors.add(:comment, "cannot be blank.")
 
-    self.user_id.blank? &&
-      errors.add(:user_id, "cannot be blank.")
-
     self.story_id.blank? &&
       errors.add(:story_id, "cannot be blank.")
 
