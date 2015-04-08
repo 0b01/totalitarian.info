@@ -15,7 +15,7 @@ html {
 body, textarea, input, button {
 	font-family: "helvetica neue", arial, sans-serif;
 	font-size: 9.5pt;
-	background-color: #78CEF6;
+	background-color: #4D0E16;
 }
 
 a {
@@ -454,7 +454,7 @@ li.story {
 	clear: both;
 }
 ol.stories li.story div.story_liner {
-    background-color: #78CEF6;
+    background-color: black;
     border-right: 1px solid #B7C5D9;
     border-width: medium 1px 1px medium;
     border-style: none solid solid none;
@@ -915,11 +915,11 @@ table.data td p:last-child {
 	border: 0;
 	margin: 0 40px;
 	padding: 0;
-    background-color: #78CEF6;
+    background-color: #4D0E16;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
-    background-color: #78CEF6;
+    background-color: #4D0E16;
 	border-top: 0px;
 	padding: 1em;
 }
