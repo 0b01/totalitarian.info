@@ -82,57 +82,69 @@ class Vote < ActiveRecord::Base
 
   def self.vote_thusly_on_story_or_comment_for_user_because(vote, story_id,
   comment_id, user_id, reason, update_counters = true)
-    v = Vote.where(:user_id => user_id, :story_id => story_id,
-      :comment_id => comment_id).first_or_initialize
-
-    if !v.new_record? && v.vote == vote
-      return
+    if !user_id
+      anon = true
     end
+
+    v = Vote.where(:user_id => user_id, :story_id => story_id, :comment_id => comment_id).first_or_initialize
 
     upvote = 0
     downvote = 0
-
-    Vote.transaction do
-      # unvote
-      if vote == 0
-        # neutralize previous vote
-        upvote = (v.vote == 1 ? -1 : 0)
-        downvote = (v.vote == -1 ? -1 : 0)
-        v.destroy!
-
-      # new vote or change vote
-      else
-        if !v.new_record?
+    if !anon 
+      if !v.new_record? && v.vote == vote
+        return
+      end
+      Vote.transaction do
+        # unvote
+        if vote == 0
+          # neutralize previous vote
           upvote = (v.vote == 1 ? -1 : 0)
           downvote = (v.vote == -1 ? -1 : 0)
+          v.destroy!
+  
+        # new vote or change vote
+        else
+          if !v.new_record?
+            upvote = (v.vote == 1 ? -1 : 0)
+            downvote = (v.vote == -1 ? -1 : 0)
+          end
+  
+          upvote += (vote == 1 ? 1 : 0)
+          downvote += (vote == -1 ? 1 : 0)
+  
+          v.vote = vote
+          v.reason = reason
+          v.save!
         end
-
+  
+        if update_counters && (downvote != 0 || upvote != 0)
+          if v.comment_id
+            c = Comment.find(v.comment_id)
+            c.give_upvote_or_downvote_and_recalculate_confidence!(upvote, downvote)
+          else
+            s = Story.find(v.story_id)
+            s.give_upvote_or_downvote_and_recalculate_hotness!(upvote, downvote)
+          end
+        end
+      end
+    else # anon
+      Vote.transaction do
         upvote += (vote == 1 ? 1 : 0)
         downvote += (vote == -1 ? 1 : 0)
-
         v.vote = vote
         v.reason = reason
         v.save!
-      end
-
-      if update_counters && (downvote != 0 || upvote != 0)
-        if v.comment_id
-          c = Comment.find(v.comment_id)
-          if c.user_id != user_id
-            User.update_counters c.user_id, :karma => upvote - downvote
+        if update_counters && (downvote != 0 || upvote != 0)
+          if v.comment_id
+            c = Comment.find(v.comment_id)
+            c.give_upvote_or_downvote_and_recalculate_confidence!(upvote,
+              downvote)
+          else
+            s = Story.find(v.story_id)
+            s.give_upvote_or_downvote_and_recalculate_hotness!(upvote, downvote)
           end
-
-          c.give_upvote_or_downvote_and_recalculate_confidence!(upvote,
-            downvote)
-        else
-          s = Story.find(v.story_id)
-          if s.user_id != user_id
-            User.update_counters s.user_id, :karma => upvote - downvote
-          end
-
-          s.give_upvote_or_downvote_and_recalculate_hotness!(upvote, downvote)
         end
       end
-    end
+    end    
   end
 end

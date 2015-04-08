@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       @user = user
       Rails.logger.info "  Logged in as user #{@user.id} (#{@user.username})"
     else
-      @anon = true
+      @anon = {:ip => request.remote_ip}
       Rails.logger.info "  Not logged in. Anonymous."
     end
     
