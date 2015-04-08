@@ -176,8 +176,13 @@ class CommentsController < ApplicationController
       return render :text => "can't find comment", :status => 400
     end
 
-    Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
-      comment.id, @user.id, nil)
+    if @user
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
+        comment.id, @user.id, nil)
+    elsif @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
+        comment.id, nil, nil)
+    end
 
     render :text => "ok"
   end
@@ -187,8 +192,14 @@ class CommentsController < ApplicationController
       return render :text => "can't find comment", :status => 400
     end
 
-    Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
-      comment.id, @user.id, params[:reason])
+    if @user
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
+        comment.id, @user.id, params[:reason])
+    elsif @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
+        comment.id, nil )
+    end
+
 
     render :text => "ok"
   end
