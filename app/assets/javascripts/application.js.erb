@@ -261,6 +261,7 @@ var _Lobsters = Class.extend({
   postCommentAsAnon: function(form) {
     var arr = $('form').serializeArray();
     arr.push({name:"anon",value:"true"});
+    console.log(arr);
     $.post($(form).attr("action"), arr, function(data) {
       if ($(form).find('#parent_comment_short_id').length) {
         $(form).closest('.comment').replaceWith($.parseHTML(data));
