@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
     comment = story.comments.build
     comment.comment = params[:comment].to_s
-    comment.user = @user
+    #comment.user = @user
 
     if params[:hat_id] && @user.hats.where(:id => params[:hat_id])
       comment.hat_id = params[:hat_id]
@@ -32,9 +32,17 @@ class CommentsController < ApplicationController
     end
 
     # prevent double-clicks of the post button
-    if params[:preview].blank? &&
-    (pc = Comment.where(:story_id => story.id, :user_id => @user.id,
-      :parent_comment_id => comment.parent_comment_id).first)
+    if @anon && params[:preview].blank? &&
+      (pc = Comment.where(:story_id => story.id, :user_id => @anon[:ip],
+        :parent_comment_id => comment.parent_comment_id).first)
+      if (Time.now - pc.created_at) < 5.minutes
+        comment.errors.add(:comment, "^You have already posted a comment " <<
+          "here recently.")
+        return render :partial => "commentbox", :layout => false,
+          :content_type => "text/html", :locals => { :comment => comment }
+    elsif params[:preview].blank? &&
+      (pc = Comment.where(:story_id => story.id, :user_id => @user.id,
+        :parent_comment_id => comment.parent_comment_id).first)
       if (Time.now - pc.created_at) < 5.minutes
         comment.errors.add(:comment, "^You have already posted a comment " <<
           "here recently.")
@@ -148,8 +156,14 @@ class CommentsController < ApplicationController
       return render :text => "can't find comment", :status => 400
     end
 
-    Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
-      comment.id, @user.id, nil)
+    if @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
+        comment.id, nil, nil)
+      return render :text => "unvoted as anonymous => ip " << @anon[:ip]
+    elsif @user
+      Vote.vote_thusly_on_story_or_comment_for_user_because(0, comment.story_id,
+        comment.id, @user.id, nil)
+    end
 
     render :text => "ok"
   end
@@ -159,8 +173,14 @@ class CommentsController < ApplicationController
       return render :text => "can't find comment", :status => 400
     end
 
-    Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
-      comment.id, @user.id, params[:reason])
+    if @anon
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
+        comment.id, nil, params[:reason])
+      return render :text => "unvoted as anonymous => ip " << @anon[:ip]
+    elsif @user
+      Vote.vote_thusly_on_story_or_comment_for_user_because(1, comment.story_id,
+        comment.id, @user.id, params[:reason])
+    end
 
     render :text => "ok"
   end
