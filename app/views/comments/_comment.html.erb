@@ -54,7 +54,6 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
       <% end %>
 
       <% if !comment.previewing %>
-        |
         <% if comment.is_editable_by_user?(@user) %>
           |
           <a class="comment_editor">edit</a>
