@@ -194,7 +194,7 @@ class Comment < ActiveRecord::Base
   def deliver_mention_notifications
     self.plaintext_comment.scan(/\B\@([\w\-]+)/).flatten.uniq.each do |mention|
       if u = User.where(:username => mention).first
-        if u.id == self.user.id
+        if self.anon || u.id == self.user.id
           next
         end
 
@@ -220,7 +220,7 @@ class Comment < ActiveRecord::Base
   end
 
   def deliver_reply_notifications
-    if self.parent_comment_id && (u = self.parent_comment.try(:user)) && u.id != self.user.id
+    if self.parent_comment_id && (u = self.parent_comment.try(:user)) && (self.anon || u.id != self.user.id )
       if u.email_replies?
         begin
           EmailReply.reply(self, u).deliver
