@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150313040930) do
     t.string   "short_id",           limit: 10,                           default: "",    null: false
     t.integer  "story_id",                                                                null: false
     t.text     "user_id",
+    t.boolean  "anon",                                                    default:true,
     t.integer  "parent_comment_id"
     t.integer  "thread_id"
     t.text     "comment",                                                                 null: false

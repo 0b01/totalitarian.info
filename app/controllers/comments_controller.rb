@@ -18,6 +18,9 @@ class CommentsController < ApplicationController
     comment.comment = params[:comment].to_s
     if @user
       comment.user = @user
+    elsif @anon
+      comment.user = nil
+      comment.anon = params[:anon].to_s == "true"
     end
 
     if params[:hat_id] && @user.hats.where(:id => params[:hat_id])

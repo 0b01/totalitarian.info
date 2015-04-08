@@ -31,6 +31,9 @@ class Comment < ActiveRecord::Base
     self.comment.to_s.strip == "" &&
       errors.add(:comment, "cannot be blank.")
 
+    ( self.user_id.blank? ) &&
+      self.anon = true
+
     self.story_id.blank? &&
       errors.add(:story_id, "cannot be blank.")
 
@@ -220,8 +223,7 @@ class Comment < ActiveRecord::Base
   end
 
   def deliver_reply_notifications
-    if self.parent_comment_id && (u = self.parent_comment.try(:user)) &&
-    u.id != self.user.id
+    if self.parent_comment_id && (u = self.parent_comment.try(:user)) && u.id != self.user.id
       if u.email_replies?
         begin
           EmailReply.reply(self, u).deliver
@@ -323,7 +325,9 @@ class Comment < ActiveRecord::Base
   end
 
   def mark_submitter
-    Keystore.increment_value_for("user:#{self.user_id}:comments_posted")
+    if self.user_id
+      Keystore.increment_value_for("user:#{self.user_id}:comments_posted")
+    end
   end
 
   def mailing_list_message_id
