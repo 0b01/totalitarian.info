@@ -296,7 +296,7 @@ private
 
   def story_params
     p = params.require(:story).permit(
-      :title, :url, :description, :moderation_reason, :seen_previous,
+      :title, :url, :description, :moderation_reason, :anon, :seen_previous,
       :merge_story_short_id, :is_unavailable, :tags_a => [],
     )
 
