@@ -43,10 +43,12 @@
     <%= f.label :title, "Title:", :class => "required" %>
     <%= f.text_field :title, :maxlength => 100, :autocomplete => "off"  %>
   </div>
-  <div class="boxline">
-    <%= f.label :anon, "Post as Anonymous", :class => "required" %>
-    <%= f.checkbox :anon %>
-  </div>
+  <% if @user %>
+    <div class="boxline">
+      <%= f.label :anon, "Post as Anonymous", :class => "required" %>
+      <%= f.checkbox :anon %>
+    </div>
+  <% end %>
 
   <div class="boxline" style="margin-bottom: 2px;">
   <%= f.label :tags_a, "Tags:", :class => "required",
