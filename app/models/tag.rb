@@ -46,6 +46,13 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  def valid_for_anon?
+    if self.privileged?
+      false
+    end
+    true
+  end
+
   def filtered_count
     @filtered_count ||= TagFilter.where(:tag_id => self.id).count
   end

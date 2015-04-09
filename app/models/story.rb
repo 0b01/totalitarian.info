@@ -20,7 +20,7 @@ class Story < ActiveRecord::Base
 
   validates_length_of :title, :in => 3..150
   validates_length_of :description, :maximum => (64 * 1024)
-  validates_presence_of :user_id
+
 
   DOWNVOTABLE_DAYS = 14
 
@@ -150,8 +150,7 @@ class Story < ActiveRecord::Base
 
     # give a story's comment votes some weight, but ignore the story
     # submitter's own comments
-    cpoints = self.comments.where("user_id != '?'", self.user_id).
-      select(:upvotes, :downvotes).map{|c| c.upvotes + 1 - c.downvotes }.
+    cpoints = self.comments.select(:upvotes, :downvotes).map{|c| c.upvotes + 1 - c.downvotes }.
       inject(&:+).to_i
 
     # don't immediately kill stories at 0 by bumping up score by one
@@ -172,7 +171,7 @@ class Story < ActiveRecord::Base
   end
 
   def can_be_seen_by_user?(user)
-    if is_gone? && !(user && (user.is_moderator? || user.id == self.user_id))
+    if is_gone? && !(user && (user.is_moderator? ))
       return false
     end
 
@@ -185,12 +184,11 @@ class Story < ActiveRecord::Base
     u = self.editor || self.user
 
     self.taggings.each do |t|
-      if !t.tag.valid_for?(u)
-        raise "#{u.username} does not have permission to use privileged " <<
-          "tag #{t.tag.tag}"
+      if !t.tag.valid_for?(u) || !t.tag.valid_for_anon?
+        raise "You do not have permission to use privileged tag #{t.tag.tag}"
       elsif t.tag.inactive? && !t.new_record? && !t.marked_for_destruction?
         # stories can have inactive tags as long as they existed before
-        raise "#{u.username} cannot add inactive tag #{t.tag.tag}"
+        raise "You cannot add inactive tag #{t.tag.tag}"
       end
     end
 
@@ -355,7 +353,9 @@ class Story < ActiveRecord::Base
   end
 
   def mark_submitter
-    Keystore.increment_value_for("user:#{self.user_id}:stories_submitted")
+    if self.user_id
+      Keystore.increment_value_for("user:#{self.user_id}:stories_submitted")
+    end
   end
 
   def merge_into_story!(story)
@@ -380,7 +380,7 @@ class Story < ActiveRecord::Base
 
   def record_initial_upvote
     Vote.vote_thusly_on_story_or_comment_for_user_because(1, self.id, nil,
-      self.user_id, nil, false)
+      nil, nil, false)
   end
 
   def score

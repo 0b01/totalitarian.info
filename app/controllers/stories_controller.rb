@@ -2,8 +2,7 @@ class StoriesController < ApplicationController
   before_filter :require_logged_in_user_or_400,
     :only => [ :upvote, :downvote, :unvote, :hide, :unhide, :preview ]
 
-  before_filter :require_logged_in_user, :only => [ :destroy, :create, :edit,
-    :fetch_url_title, :new ]
+  before_filter :require_logged_in_user, :only => [ :destroy, :edit ]
 
   before_filter :find_user_story, :only => [ :destroy, :edit, :undelete,
     :update ]
@@ -23,7 +22,6 @@ class StoriesController < ApplicationController
       if @story.save
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",
           "+1")
-
         return redirect_to @story.comments_path
       end
     end
@@ -118,7 +116,11 @@ class StoriesController < ApplicationController
 
   def preview
     @story = Story.new(story_params)
-    @story.user_id = @user.id
+    if @user
+      @story.user_id = @user.id
+    elsif @anon
+      @story.anon = true
+    end
     @story.previewing = true
 
     @story.vote = Vote.new(:vote => 1)
@@ -298,7 +300,7 @@ private
       :merge_story_short_id, :is_unavailable, :tags_a => [],
     )
 
-    if @user.is_moderator?
+    if @user && @user.is_moderator?
       p
     else
       p.except(:moderation_reason, :merge_story_short_id, :is_unavailable)
