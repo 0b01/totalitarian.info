@@ -848,7 +848,7 @@ table.data .capright {
 }
 
 table.data th {
-	background-color: #000;
+	background-color: white;
 	border-bottom: 1px solid #cacaca;
 	border-top: 1px solid #cacaca;
 	text-align: left;
