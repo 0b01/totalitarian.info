@@ -43,12 +43,6 @@
     <%= f.label :title, "Title:", :class => "required" %>
     <%= f.text_field :title, :maxlength => 100, :autocomplete => "off"  %>
   </div>
-  <% if @user %>
-    <div class="boxline">
-      <%= f.label :anon, "Post as Anonymous", :class => "required" %>
-      <%= f.check_box :anon %>
-    </div>
-  <% end %>
 
   <div class="boxline" style="margin-bottom: 2px;">
   <%= f.label :tags_a, "Tags:", :class => "required",
@@ -75,6 +69,13 @@
       :placeholder => "Optional when submitting a URL; please see guidelines",
       :autocomplete => "off" %>
   </div>
+
+  <% if @user %>
+    <div class="boxline">
+      <%= f.label :anon, "Anonymous", :class => "required" %>
+      <%= f.check_box :anon %>
+    </div>
+  <% end %>
 
   <div class="boxline markdown_help_toggler">
     <a href="#" id="story_guidelines_toggler">
