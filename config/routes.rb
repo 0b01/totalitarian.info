@@ -98,6 +98,8 @@ Lobsters::Application.routes.draw do
 
     get "/filters" => "filters#index"
     post "/filters" => "filters#update"
+    get "/tags" => "filters#index"
+    post "/tags" => "filters#update"
 
     post "/invitations" => "invitations#create"
     get "/invitations" => "invitations#index"

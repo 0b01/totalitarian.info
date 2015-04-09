@@ -8,9 +8,18 @@ class HomeController < ApplicationController
     begin
       render :action => "about"
     rescue
-      render :text => "<div class=\"box wide\">" <<
-        "totalitarian.info is an anonymous link aggregator" <<
-        "</div>", :layout => "application"
+      render :text => "<div class=\"box wide\">" << %Q(
+      <h3 id="about">About</h3>
+      <p><a href="http://totalitarian.info">Totalitarian.info</a> is an anonymous link-aggregation site similar to 4chan, reddit, Lobste.rs and Hacker News while also attempting to fixing problems of those sites. The <a href="https://github.com/potsmodern/totalitarian.info">code</a> is cloned from <a href="https://www.lobste.rs">Lobste.rs</a>.</p>
+      <h4 id="history">History</h4>
+      <p>The idea of an anonymous link aggregator was from a thread on 4chan's /g/ board. It was implemented by <a href="https://github.com/potsmodern">potsmodern</a> using the source code to lobste.rs. The domain was originally registered for <a href="http://en.wikipedia.org/wiki/User:Fixuture/The_Legacy_of_Totalitarianism_in_a_Tundra">The Legacy of Totalitarianism in a Tundra</a> but repurposed after it was finished.</p>
+      <h4 id="rule">Rule</h4>
+      <p>There are not rules at the moment, just use good judgements.</p>
+      <h4 id="tags">Tags</h4>
+      <p>I think there should be more tags, but <a href="https://www.totalitarian.info/tags">those</a> will suffice for now.</p>
+      <h4 id="suggestions">Suggestions</h4>
+      <p>If you have a suggestion or whatever, you want to post it <a href="https://www.totalitarian.info/s/bcipn1/suggestions_bugs_ideas">here</a>.</p>
+    ) << "</div>", :layout => "application"
     end
   end
 
