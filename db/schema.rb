@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150313040930) do
   create_table "stories", force: true do |t|
     t.datetime "created_at"
     t.integer  "user_id"
+    t.boolean  "anon",                                                         default: true
     t.string   "url",                    limit: 250,                           default: ""
     t.string   "title",                  limit: 150,                           default: "",  null: false
     t.text     "description"

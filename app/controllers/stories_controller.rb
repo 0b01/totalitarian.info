@@ -13,7 +13,11 @@ class StoriesController < ApplicationController
     @cur_url = "/stories/new"
 
     @story = Story.new(story_params)
-    @story.user_id = @user.id
+    if @user
+      @story.user_id = @user.id
+    elsif @anon
+      @story.anon = true
+    end
 
     if @story.valid? && !(@story.already_posted_story && !@story.seen_previous)
       if @story.save
