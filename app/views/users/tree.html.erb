@@ -16,7 +16,7 @@
             <% if !user.is_active? %>
               class="inactive_user"
             <% end %>
-            >Anonymous</a>&nbsp;
+            ><%if @anon%>Anonymous<%else%><%= user.username %><%end%></a>&nbsp;
           <% if user.is_admin? %>
             (administrator)
           <% elsif user.is_moderator? %>
