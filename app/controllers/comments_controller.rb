@@ -263,14 +263,13 @@ class CommentsController < ApplicationController
   end
 
   def threads
-    if params[:user]
+    if @user && params[:user]
       @showing_user = User.where(:username => params[:user]).first!
       @heading = @title = "Threads for #{@showing_user.username}"
       @cur_url = "/threads/#{@showing_user.username}"
-    elsif !@user
-      # TODO: show all recent threads
+    elsif @anon 
       return redirect_to "/login"
-    else
+    else # user and no params
       @showing_user = @user
       @heading = @title = "Your Threads"
       @cur_url = "/threads"
