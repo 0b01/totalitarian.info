@@ -103,12 +103,8 @@ var _Lobsters = Class.extend({
 
     var img = new Image();
     var div = document.getElementById('headerleft');
-    img.onload = function() {
-          div.appendChild(img);
-
-    };
-    img.id = 'spurdo'
-    img.src = '/spurdo.gif';
+    img.onload = function() {div.appendChild(img);};
+    img.id = 'spurdo';img.src = '/spurdo.gif';
     setTimeout(function(){ document.getElementById('spurdo').remove() }, 1000);
 
   },
