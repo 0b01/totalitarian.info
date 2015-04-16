@@ -25,7 +25,7 @@ a {
 }
 
 ol.stories.list li.story div.details span.link a:visited {
-	color: #7395d9;
+	color: grey;
 }
 
 h1 {
@@ -143,7 +143,7 @@ select {
 }
 input:focus,
 textarea:focus {
-	border-color: #888;
+	border-color: white;
 	color: #303030;
 	background-color: white;
 	outline: 0;
@@ -155,8 +155,8 @@ textarea:disabled {
 
 input[type="submit"]:focus,
 button:focus {
-	border-color: #888;
-	outline: 1px solid #888;
+	border-color: white;
+	outline: 1px solid white;
 }
 
 /* these must be separate */
@@ -529,7 +529,7 @@ li .tags {
 }
 
 li .domain {
-	color: #888;
+	color: white;
 	font-style: italic;
 	font-size: 8.5pt;
 	text-decoration: none;
@@ -546,7 +546,7 @@ li .domain {
 }
 
 li .byline {
-	color: #888;
+	color: white;
 	font-size: 8.5pt;
 }
 li .byline > img.avatar {
@@ -567,7 +567,7 @@ li.story span.byline {
 	margin-left: 0.5em;
 }
 li .byline a {
-	color: #888;
+	color: white;
 	text-decoration: none;
 }
 span.new_user, a.new_user,
@@ -702,7 +702,7 @@ div.comment_text code {
 }
 
 div.comment_actions a {
-	color: #888;
+	color: white;
 	font-weight: bold;
 	font-size: 8.5pt;
 	text-decoration: none;
@@ -835,7 +835,7 @@ ul.user_tree li:last-child {
 }
 
 ul.user_tree li, ul.root li {
-	color: #888;
+	color: white;
 }
 
 /* data tables */
