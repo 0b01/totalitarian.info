@@ -48,10 +48,10 @@ div.s {
 }
 
 a.tag {
-	background-color: #E4DDEA;
-	border: 1px solid #6C66E3;
+	background-color: white;
+	border: 1px solid black;
 	border-radius: 10px;
-	color: #18180F;
+	color: black;
 	font-size: 7.5pt;
 	margin-left: 0.25em;
 	padding: 0px 0.5em 1px 0.5em;
