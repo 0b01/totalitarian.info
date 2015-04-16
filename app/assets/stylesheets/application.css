@@ -25,7 +25,7 @@ a {
 }
 
 ol.stories.list li.story div.details span.link a:visited {
-	color: #686868;
+	color: #C9C3C3;
 }
 ol.stories.list li.story div.details span.link a:hover {
 	color: black;
@@ -401,7 +401,7 @@ div.voters {
 }
 
 div.voters div.score {
-	color: white;
+	color: black;
 	font-size: 9pt;
 	margin-top: 1px;
 	margin-bottom: -3px;
@@ -416,7 +416,7 @@ li.story div.voters div.score {
 
 div.voters .upvoter,
 div.voters .downvoter {
-	border-color: transparent transparent white transparent;
+	border-color: transparent transparent #C9C3C3 transparent;
 	border-style: solid;
 	border-width: 6px;
 	text-decoration: none;
@@ -459,10 +459,10 @@ li.story {
 }
 ol.stories li.story div.story_liner {
     background-color: white;
-    border-right: 1px solid #B7C5D9;
+    border-right: 1px solid black;
     border-width: medium 1px 1px medium;
     border-style: none solid solid none;
-    border-color: -moz-use-text-color #B7C5D9 #B7C5D9 -moz-use-text-color;
+    border-color: -moz-use-text-color black black -moz-use-text-color;
     -moz-border-top-colors: none;
     -moz-border-right-colors: none;
     -moz-border-bottom-colors: none;
