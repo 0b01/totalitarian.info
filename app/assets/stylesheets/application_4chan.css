@@ -15,11 +15,11 @@ html {
 body, textarea, input, button {
 	font-family: "helvetica neue", arial, sans-serif;
 	font-size: 9.5pt;
-	background-color: #ffffff;
+	background-color: #DDFBE6;
 }
 
 a {
-	color: #000000;
+	color: #2562dc;
 	cursor: pointer;
 }
 
@@ -88,7 +88,7 @@ span.hat span.crown {
 }
 
 span.hat span.crown, span.hat a {
-	color: black;
+	color: #777;
 	text-decoration: none;
 }
 
@@ -294,7 +294,7 @@ div#inside {
 }
 
 .headerlinks a {
-	color: black;
+	color: #777;
 	text-decoration: none;
 	padding-right: 0.75em;
 }
@@ -570,7 +570,7 @@ li .byline a {
 }
 span.new_user, a.new_user,
 li .byline a.new_user {
-    color: black;
+    color: #117743;
     font-weight: bold;
 }
 span.inactive_user, a.inactive_user,
@@ -916,11 +916,11 @@ table.data td p:last-child {
 	border: 0;
 	margin: 0 40px;
 	padding: 0;
-    background-color: #ffffff;
+    background-color: #DDFBE6;
 }
 .box_submitter {
 	border: 1px solid #cacaca;
-    background-color: #ffffff;
+    background-color: #DDFBE6;
 	border-top: 0px;
 	padding: 1em;
 }
