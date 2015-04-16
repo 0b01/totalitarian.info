@@ -14,6 +14,7 @@ html {
 
 body, textarea, input, button {
 	font-family: "helvetica neue", arial, sans-serif;
+    font-weight: bold;
 	font-size: 9.5pt;
 	background-color: #ffffff;
 }
@@ -71,7 +72,7 @@ a.tag_meta {
 }
 
 span.hat {
-	border-bottom: 6px solid #bbb;
+	border-bottom: 6px solid white;
 	border-radius: 4px;
 	padding: 1px 8px;
 	vertical-align: super;
@@ -180,7 +181,7 @@ div.select2-choices {
 	text-align: center;
 	background-color: #fafafa;
 	border: 1px solid #ccc;
-	border-bottom-color: #bbb;
+	border-bottom-color: white;
 	cursor: pointer;
 }
 button:first-child,
@@ -397,7 +398,7 @@ div.voters {
 }
 
 div.voters div.score {
-	color: #aaa;
+	color: white;
 	font-size: 9pt;
 	margin-top: 1px;
 	margin-bottom: -3px;
@@ -412,7 +413,7 @@ li.story div.voters div.score {
 
 div.voters .upvoter,
 div.voters .downvoter {
-	border-color: transparent transparent #bbb transparent;
+	border-color: transparent transparent white transparent;
 	border-style: solid;
 	border-width: 6px;
 	text-decoration: none;
@@ -434,7 +435,7 @@ div.voters .upvoter {
 }
 
 div.voters .downvoter {
-	border-color: #bbb transparent transparent transparent;
+	border-color: white transparent transparent transparent;
 	border-width: 5px;
 	margin-top: 4px;
 	margin-left: 15px;
@@ -454,7 +455,7 @@ li.story {
 	clear: both;
 }
 ol.stories li.story div.story_liner {
-    background-color: #BAF1FB;
+    background-color: black;
     border-right: 1px solid #B7C5D9;
     border-width: medium 1px 1px medium;
     border-style: none solid solid none;
@@ -514,6 +515,7 @@ li .link {
 }
 
 li .link a {
+    color: white;
 	font-size: 11pt;
 	text-decoration: none;
 }
@@ -764,7 +766,7 @@ div.markdown_help_label {
 	float: right;
 	font-size: 9pt;
 	line-height: 2em;
-	color: #aaa;
+	color: black;
 	text-decoration: underline;
 	cursor: pointer;
 }
