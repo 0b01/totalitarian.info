@@ -547,5 +547,10 @@ $(document).ready(function() {
   });
   $(document).on("click", ".invert", function() {
     $('html').css('filter','invert(100%)').css('background-color','black');
+    $('#l_holder').toggleClass('invert').toggleClass('deinvert');
+  });
+  $(document).on("click", ".deinvert", function() {
+    $('html').css('filter','invert(0%)').css('background-color','white');
+    $('#l_holder').toggleClass('invert').toggleClass('deinvert');
   });
 });
