@@ -184,7 +184,7 @@ div.select2-choices {
 	text-align: center;
 	background-color: #fafafa;
 	border: 1px solid #ccc;
-	border-bottom-color: white;
+	border-bottom-color: #ccc;
 	cursor: pointer;
 }
 button:first-child,
