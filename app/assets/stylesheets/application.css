@@ -28,7 +28,7 @@ ol.stories.list li.story div.details span.link a:visited {
 	color: #686868;
 }
 ol.stories.list li.story div.details span.link a:hover {
-	color: white;
+	color: black;
 }
 
 h1 {
@@ -458,7 +458,7 @@ li.story {
 	clear: both;
 }
 ol.stories li.story div.story_liner {
-    background-color: black;
+    background-color: white;
     border-right: 1px solid #B7C5D9;
     border-width: medium 1px 1px medium;
     border-style: none solid solid none;
@@ -518,7 +518,7 @@ li .link {
 }
 
 li .link a {
-    color: white;
+    color: black;
 	font-size: 11pt;
 	text-decoration: none;
 }
@@ -549,7 +549,7 @@ li .domain {
 }
 
 li .byline {
-	color: white;
+	color: black;
 	font-size: 8.5pt;
 }
 li .byline > img.avatar {
@@ -570,12 +570,12 @@ li.story span.byline {
 	margin-left: 0.5em;
 }
 li .byline a {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 span.new_user, a.new_user,
 li .byline a.new_user {
-    color: black;
+    color: white;
     font-weight: bold;
 }
 span.inactive_user, a.inactive_user,
