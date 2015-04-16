@@ -546,6 +546,6 @@ $(document).ready(function() {
     return false;
   });
   $(document).on("click", ".invert", function() {
-    $('html, body').css('filter','invert(100%)');
+    $('html').css('filter','invert(100%)').css('background-color','black');
   });
 });
