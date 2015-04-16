@@ -25,7 +25,10 @@ a {
 }
 
 ol.stories.list li.story div.details span.link a:visited {
-	color: grey;
+	color: black;
+}
+ol.stories.list li.story div.details span.link a:hover {
+	color: white;
 }
 
 h1 {
@@ -529,7 +532,7 @@ li .tags {
 }
 
 li .domain {
-	color: white;
+	color: #6B6B6B;
 	font-style: italic;
 	font-size: 8.5pt;
 	text-decoration: none;
