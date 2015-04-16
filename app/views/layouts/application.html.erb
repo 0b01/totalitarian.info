@@ -41,7 +41,7 @@
     <div id="header">
       <div id="headerleft">
         <a id="l_holder" style="background-color: #<%= sprintf("%02x%02x%02x",
-          [ 255, ((@traffic+10) * 7).floor + 50.0 ].min, 0, 0) %>;" href="/"
+          [ 255, ((@traffic+10) * 7).floor + 50.0 ].min, 255, 0) %>;" href="/"
           title="Current traffic: <%= @traffic.to_i + 10 %>"></a>
         <% links = {
           "/recent" => "Recent",
@@ -76,7 +76,7 @@
           raw("class=\"cur_url\"") : "" %>>Tags</a>
         <% if @user %>
           <a class="new_user" href="/settings" <%= @cur_url == "/settings" ?
-              raw("class=\"new_user\"") : "" %>><%= @user.username %>
+              raw("class=\"new_user\"") : "" %> style="color:white"><%= @user.username %>
           </a>
           <%= link_to "Logout", { :controller => "login", :action => "logout" },
           :data => { :confirm => "Are you sure you want to logout?" },
