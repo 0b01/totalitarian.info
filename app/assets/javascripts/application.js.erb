@@ -545,4 +545,7 @@ $(document).ready(function() {
     $("#story_guidelines").toggle();
     return false;
   });
+  $(document).on("click", ".invert", function() {
+    $('html, body').css('filter','invert(100%)');
+  });
 });

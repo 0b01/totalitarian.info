@@ -47,11 +47,11 @@
         } %>
 
         <% if @user %>
-          <% links.merge!({ "/threads" => "Your Threads",
-            "/stories/new" => "Submit Story" }) %>
-        <%elsif @anon%>
           <% links.merge!({ "/stories/new" => "Submit Story" }) %>
+        <%elsif @anon%>
+            <% links.merge!({ "/stories/new" => "Submit Story"}) %>
         <% end %>
+        <div id="l_holder" class="invert" style="background-color: black;"></div>
 
 
         <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
