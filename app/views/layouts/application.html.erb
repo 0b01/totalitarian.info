@@ -40,7 +40,7 @@
   <div id="wrapper">
     <div id="header">
       <div id="headerleft">
-        <a id="l_holder" style="background-color: black;" href="/"
+        <a id="l_holder" class="invert" style="background-color: black;"
           title="Current traffic: <%= @traffic.to_i + 1%>"></a>
         <% links = {
           "/recent" => "Recent",
@@ -51,7 +51,6 @@
         <%elsif @anon%>
             <% links.merge!({ "/stories/new" => "Submit Story"}) %>
         <% end %>
-        <div id="l_holder" class="invert" style="background-color: black;"></div>
 
 
         <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
