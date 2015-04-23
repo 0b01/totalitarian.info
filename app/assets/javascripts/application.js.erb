@@ -395,10 +395,10 @@ $(document).ready(function() {
           comments[i].className += 'upvoted';
       }
   }
-  if ($cookie('invert') == '1') {
+  if ($.cookie('invert') == '1') {
     $('body').css('filter','invert(100%)').css('background-color','black');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
-  } else if ($cookie('invert') == '0') {
+  } else if ($.cookie('invert') == '0') {
     $('body').css('filter','invert(0%)').css('background-color','white');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
   }
@@ -555,11 +555,11 @@ $(document).ready(function() {
   $(document).on("click", ".invert", function() {
     $('html').css('filter','invert(100%)').css('background-color','black');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
-    $cookie('invert', '1');
+    $.cookie('invert', '1');
   });
   $(document).on("click", ".deinvert", function() {
     $('html').css('filter','invert(0%)').css('background-color','white');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
-    $cookie('invert', '0');
+    $.cookie('invert', '0');
   });
 });
