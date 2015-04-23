@@ -396,10 +396,10 @@ $(document).ready(function() {
       }
   }
   if ($cookies('invert') == '1') {
-    $('body').css('filter','invert(100%)').css('background-color','black');
+    $('body').css('filter','invert(0%)').css('background-color','white');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
   } else if ($cookies('invert') == '0') {
-    $('body').css('filter','invert(0%)').css('background-color','white');
+    $('body').css('filter','invert(100%)').css('background-color','black');
     $('#l_holder').toggleClass('invert').toggleClass('deinvert');
   }
   
