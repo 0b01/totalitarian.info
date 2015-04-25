@@ -590,6 +590,18 @@ class Story < ActiveRecord::Base
     summary = JSON.parse(result)['summary'].join('\n')
     return summary
   end
+  def article_sentiment
+    require 'net/http'
+    result = Net::HTTP.get(URI.parse('http://wingify.com/contextsense?url=' + self.url))
+    doc = Nokogiri::HTML(result)
+    sent = doc('.result').children.to_s.gsub(/\s+/,'')
+
+    tags = []
+    doc('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
+    tagline = tags.join(', ')
+    return sent + '\n' + tagline
+
+  end
 
 
   def fetched_canonical_url

@@ -71,14 +71,14 @@ class StoriesController < ApplicationController
       oattrs[:title] = title
     end
 
-    if (summary = s.summarized_article).present?
-      oattrs[:description] = summary
-    end
 
     if (cu = s.fetched_canonical_url).present?
       oattrs[:url] = cu
     end
 
+    if (sentiment = s.article_sentiment).present?
+      oattrs[:sentiment] = sentiment
+    end
 
     return render :json => oattrs
   end

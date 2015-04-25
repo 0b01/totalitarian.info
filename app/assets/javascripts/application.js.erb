@@ -360,8 +360,11 @@ var _Lobsters = Class.extend({
           title_field.val(data.title.substr(0, title_field.maxLength));
         if (data.url)
           url_field.val(data.url);
-        if (data.description)
-          description_field.val(data.description.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n* "));
+        if (data.description){
+          if (data.sentiment)
+            var sentiment = data.sentiment;
+          description_field.val('* ' + data.description.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n* ") + sentiment.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n") );
+        }
       }
 
       button.val(old_value);
