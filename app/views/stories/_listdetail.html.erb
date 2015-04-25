@@ -36,6 +36,11 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
       <% if story.domain.present? %>
         <a class="domain"><%= break_long_words(story.domain) %></a>
       <% end %>
+      <% if story.markeddown_description.present? %>
+        <span class="description">
+          <%= raw story.markeddown_description %>
+        </span>
+      <% end %>
 
       <% if defined?(single_story) && single_story %>
         <% story.merged_stories.each do |ms| %>
