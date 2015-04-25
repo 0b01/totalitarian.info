@@ -547,6 +547,10 @@ li .byline {
 	color: #888;
 	font-size: 8.5pt;
 }
+li .description {
+	color: #333;
+	font-size: 10.5pt;
+}
 li .byline > img.avatar {
 	margin-bottom: -5px;
 }
