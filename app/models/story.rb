@@ -599,9 +599,10 @@ class Story < ActiveRecord::Base
     doc = Nokogiri::HTML(result)
     sent = doc.css('.result').children.to_s.gsub(/\s+/,'')
 
-    tags = []
-    doc.css('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
-    tagline = 'Tags: ' + tags.join(', ')
+#    tags = []
+#    doc.css('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
+#    tagline = 'Tags: ' + tags.join(', ')
+
     return sent# + '\n' + tagline
   end
 
