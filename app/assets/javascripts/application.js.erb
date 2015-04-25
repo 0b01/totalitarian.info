@@ -363,7 +363,7 @@ var _Lobsters = Class.extend({
         if (data.description){
           if (data.sentiment)
             var sentiment = data.sentiment;
-          description_field.val('* ' + data.description.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n* ") + sentiment.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n") );
+          description_field.val('* ' + data.description.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n* ") +'\n\n'+ sentiment.replace(/(\r\n|\n|\r|\\n|\\r)/gm, "\n\n") );
         }
       }
 
