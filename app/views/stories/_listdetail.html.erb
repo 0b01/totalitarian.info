@@ -61,11 +61,6 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             <a class="domain" ><%=
               break_long_words(ms.domain) %></a>
           <% end %>
-          <% if ms.markeddown_description.present? %>
-            <span class="description">
-              <%= raw ms.markeddown_description %>
-            </span>
-          <% end %>
           <span class="byline">
             by
             <% if @user && @user.show_avatars? %>
