@@ -102,7 +102,7 @@ var _Lobsters = Class.extend({
     Lobsters.vote("story", voterEl, 1);
 
     var img = new Image();
-    var div = document.getElementById('headerleft');
+    var div = voterEl;
     img.onload = function() {div.appendChild(img);};
     img.id = 'spurdo';img.src = '/thought.jpg';
     setTimeout(function(){ document.getElementById('spurdo').remove() }, 2000);
