@@ -602,7 +602,7 @@ class Story < ActiveRecord::Base
     tags = []
     doc.css('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
     tagline = 'Tags: ' + tags.join(', ')
-    return sent + '\n' + tagline
+    return sent# + '\n' + tagline
   end
 
 
