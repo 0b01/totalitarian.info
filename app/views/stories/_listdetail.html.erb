@@ -56,7 +56,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
             <a class="domain" ><%=
               break_long_words(ms.domain) %></a>
           <% end %>
-          <% if @story.markeddown_description.present? %>
+          <% if ms.markeddown_description.present? %>
             <span class="description">
               <%= raw @story.markeddown_description %>
             </span>
