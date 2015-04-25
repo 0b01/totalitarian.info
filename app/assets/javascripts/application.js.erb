@@ -361,7 +361,7 @@ var _Lobsters = Class.extend({
         if (data.url)
           url_field.val(data.url);
         if (data.description)
-          description_field.val(data.description);
+          description_field.val(data.description.split(/\r\n|\r|\n/g));
       }
 
       button.val(old_value);
