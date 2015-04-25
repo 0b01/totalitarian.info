@@ -584,6 +584,14 @@ class Story < ActiveRecord::Base
     return title
   end
 
+  def summarized_article
+    require 'net/http'
+    result = Net::HTTP.get(URI.parse('http://clipped.me/algorithm/clippedapi.php?url=' + self.url))
+    summary = JSON.parse(result)['summary'].join('\n')
+    return summary
+  end
+
+
   def fetched_canonical_url
     return @fetched_canonical_url if @fetched_canonical_url
 
