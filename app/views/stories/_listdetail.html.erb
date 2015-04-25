@@ -58,7 +58,7 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
           <% end %>
           <% if ms.markeddown_description.present? %>
             <span class="description">
-              <%= raw @story.markeddown_description %>
+              <%= raw ms.markeddown_description %>
             </span>
           <% end %>
           <span class="byline">
