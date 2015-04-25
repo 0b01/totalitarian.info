@@ -71,6 +71,9 @@ class StoriesController < ApplicationController
       oattrs[:title] = title
     end
 
+    if (summary = s.summarized_article).present?
+      oattrs[:description] = summary
+    end
 
     if (cu = s.fetched_canonical_url).present?
       oattrs[:url] = cu

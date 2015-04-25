@@ -594,13 +594,12 @@ class Story < ActiveRecord::Base
     require 'net/http'
     result = Net::HTTP.get(URI.parse('http://wingify.com/contextsense?url=' + self.url))
     doc = Nokogiri::HTML(result)
-    sent = doc('.result').children.to_s.gsub(/\s+/,'')
+    sent = doc.css('.result').children.to_s.gsub(/\s+/,'')
 
     tags = []
-    doc('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
-    tagline = tags.join(', ')
+    doc.css('.pill').each do |v| tags << '*'+v.children.to_s+'*' end 
+    tagline = 'Tags: ' + tags.join(', ')
     return sent + '\n' + tagline
-
   end
 
 
