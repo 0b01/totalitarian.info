@@ -36,8 +36,10 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
       &nbsp;
       <% end %>
 
+      <% if @user %>
       <%= button_tag "#{comment.new_record?? "Post as "+@user.username.to_s : "Update"}",
         :class => "comment-post", :type => "button"%>
+      <% end %>
       &nbsp;
       <%= button_tag "Preview", :class => "comment-preview",
         :type => "button" %>
