@@ -587,7 +587,10 @@ class Story < ActiveRecord::Base
   def summarized_article
     require 'net/http'
     result = Net::HTTP.get(URI.parse('http://clipped.me/algorithm/clippedapi.php?url=' + self.url))
-    summary = JSON.parse(result)['summary'].join('\n')
+    main_ideas = JSON.parse(result)['summary']
+    if main_ideas
+      summary = main_ideas.join('\n')
+    end
     return summary
   end
   def article_sentiment
