@@ -343,7 +343,7 @@ var _Lobsters = Class.extend({
     return false;
   },
 
-  fetchURLTitle: function(button, url_field, title_field) {
+  fetchURLTitle: function(button, url_field, title_field, description_field) {
     if (url_field.val() == "")
       return;
 
@@ -360,6 +360,8 @@ var _Lobsters = Class.extend({
           title_field.val(data.title.substr(0, title_field.maxLength));
         if (data.url)
           url_field.val(data.url);
+        if (data.description)
+          description_field.val(data.description);
       }
 
       button.val(old_value);
