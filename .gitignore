@@ -28,8 +28,8 @@ lib/tasks/deploy.rake
 # config/initializers/production.rb
 # config/database.yml
 # config/initializers/secret_token.rb
-# config/*.sphinx.conf
-# config/unicorn.conf.rb
+config/*.sphinx.conf
+config/unicorn.conf.rb
 
 # bbs symlinks into ../lobsters-bbs
 app/controllers/bbs_controller.rb
