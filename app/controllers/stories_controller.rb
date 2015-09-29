@@ -18,7 +18,7 @@ class StoriesController < ApplicationController
       @story.anon = true
     end
 
-    if !verify_recaptcha
+    if (@anon && !verify_recaptcha)
       @story.solved_captcha = false
     else
       @story.solved_captcha = true
