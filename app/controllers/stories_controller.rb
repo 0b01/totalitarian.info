@@ -14,15 +14,14 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     if @user
       @story.user_id = @user.id
+      @story.solved_captcha = true
     elsif @anon
       @story.anon = true
+      if (!verify_recaptcha)
+        @story.solved_captcha = false
+      end
     end
 
-    if (@anon && !verify_recaptcha)
-      @story.solved_captcha = false
-    else
-      @story.solved_captcha = true
-    end
 
     if @story.valid? && !(@story.already_posted_story && !@story.seen_previous)
       if @story.save
@@ -58,6 +57,8 @@ class StoriesController < ApplicationController
       flash[:error] = "You cannot edit that story."
       return redirect_to "/"
     end
+
+    @story.solved_captcha = true
 
     @title = "Edit Story"
 
@@ -211,6 +212,7 @@ class StoriesController < ApplicationController
 
     @story.is_expired = false
     @story.editor = @user
+    @story.solved_captcha = true
 
     if @story.url_is_editable_by_user?(@user)
       @story.attributes = story_params

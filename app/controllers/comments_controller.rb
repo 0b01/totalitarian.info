@@ -18,6 +18,9 @@ class CommentsController < ApplicationController
     comment.comment = params[:comment].to_s
     
     if params[:anon] || @anon
+      if !verify_recaptcha
+        return render :text => "reCaptcha not solved", :status => 300
+      end
       comment.anon = true
     else
       comment.user = @user

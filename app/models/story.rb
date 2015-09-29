@@ -62,7 +62,7 @@ class Story < ActiveRecord::Base
         errors.add(:description, "must contain text if no URL posted")
       end
     else
-      errors.add(:Captcha, "must be solved")
+      errors.add(:captcha, "must be solved")
     end
 
     check_tags

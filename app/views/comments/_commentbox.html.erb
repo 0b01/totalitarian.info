@@ -2,6 +2,11 @@
 data-shortid="<%= comment.short_id if comment.persisted? %>">
 <%= form_for comment,
 :html => { :id => "edit_comment_#{comment.short_id}" } do |f| %>
+
+  <% if @anon && (comment.persisted? || comment.parent_comment_id) %>
+    <% return render :text => "Subcomments are closed for anonymous users."%>
+  <% end %>
+
   <% if comment.errors.any? %>
     <%= errors_for comment %>
   <% end %>
@@ -30,19 +35,24 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
           [M&darr;]
         </div>
 
-      <% if @user %>
-      <%= button_tag "#{comment.new_record?? "Post as Anonymous" : "Update"}",
-        :class => "comment-post-as-anon", :type => "button"%>
-      &nbsp;
-      <% end %>
 
       <% if @user %>
-      <%= button_tag "#{comment.new_record?? "Post as "+@user.username.to_s : "Update"}",
-        :class => "comment-post", :type => "button"%>
+        <%= button_tag "#{comment.new_record?? "Post Anonymously" : "Update"}",
+          :class => "comment-post-as-anon", :type => "button"%>
+        &nbsp;
+        <%= button_tag "#{comment.new_record?? "Post as "+@user.username.to_s : "Update"}",
+          :class => "comment-post", :type => "button"%>
       <% end %>
-      &nbsp;
+
+      <% if @anon %>
+        <%= recaptcha_tags(:noscript => false) %>
+        <%= button_tag "Post", :class => "comment-post", :type => "button"%>
+      <% end %>
+
+        &nbsp;
       <%= button_tag "Preview", :class => "comment-preview",
         :type => "button" %>
+
       <% if comment.persisted? || comment.parent_comment_id %>
         &nbsp;
         <%= button_tag "Cancel", :class => "comment-cancel",
@@ -60,8 +70,7 @@ data-shortid="<%= comment.short_id if comment.persisted? %>">
       <% end %>
 
       <div style="clear: both;"></div>
-
-        <%= render :partial => "global/markdownhelp" %>
+      <%= render :partial => "global/markdownhelp" %>
     </div>
   </div>
 
