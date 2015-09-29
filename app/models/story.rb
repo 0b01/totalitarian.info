@@ -31,7 +31,7 @@ class Story < ActiveRecord::Base
   RECENT_DAYS = 30
 
   attr_accessor :vote, :already_posted_story, :previewing, :seen_previous,
-    :is_hidden_by_cur_user
+    :is_hidden_by_cur_user, :solved_captcha
   attr_accessor :editor, :moderation_reason, :merge_story_short_id
   attr_accessor :fetching_ip
 
@@ -43,22 +43,26 @@ class Story < ActiveRecord::Base
   after_save :update_merged_into_story_comments
 
   validate do
-    if self.url.present?
-      # URI.parse is not very lenient, so we can't use it
+    if self.solved_captcha
+      if self.url.present?
+        # URI.parse is not very lenient, so we can't use it
 
-      if self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/)
-        if self.new_record? && (s = Story.find_similar_by_url(self.url))
-          self.already_posted_story = s
-          if s.is_recent?
-            errors.add(:url, "has already been submitted within the past " <<
-              "#{RECENT_DAYS} days")
+        if self.url.match(/\Ahttps?:\/\/([^\.]+\.)+[a-z]+(\/|\z)/)
+          if self.new_record? && (s = Story.find_similar_by_url(self.url))
+            self.already_posted_story = s
+            if s.is_recent?
+              errors.add(:url, "has already been submitted within the past " <<
+                "#{RECENT_DAYS} days")
+            end
           end
+        else
+          errors.add(:url, "is not valid")
         end
-      else
-        errors.add(:url, "is not valid")
+      elsif self.description.to_s.strip == ""
+        errors.add(:description, "must contain text if no URL posted")
       end
-    elsif self.description.to_s.strip == ""
-      errors.add(:description, "must contain text if no URL posted")
+    else
+      errors.add(:Captcha, "must be solved")
     end
 
     check_tags

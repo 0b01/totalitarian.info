@@ -4,7 +4,7 @@ class << Rails.application
   end
 
   def name
-    "Totalitarian"
+    "totalitarian.info"
   end
 end
 

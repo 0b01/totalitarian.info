@@ -18,6 +18,12 @@ class StoriesController < ApplicationController
       @story.anon = true
     end
 
+    if !verify_recaptcha
+      @story.solved_captcha = false
+    else
+      @story.solved_captcha = true
+    end
+
     if @story.valid? && !(@story.already_posted_story && !@story.seen_previous)
       if @story.save
         Countinual.count!("#{Rails.application.shortname}.stories.submitted",

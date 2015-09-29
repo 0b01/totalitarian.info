@@ -93,7 +93,13 @@ class="story <%= story.vote && story.vote[:vote] == 1 ? "upvoted" : "" %>
         <% if story.anon %>
           <a class="new_user" >Anonymous</a>
         <% elsif story.user_id %>
-          <a class="new_user" ><%= story.user.username%></a>
+          <a class="new_user registered" ><%= story.user.username%></a>
+            <% if story.user.is_admin? %>
+              (ADMIN)
+            <% elsif story.user.is_moderator? %>
+              (MOD)
+            <% end %>
+
         <% end %>
 
         <%= time_ago_in_words_label(story.created_at, :strip_about => true) %>

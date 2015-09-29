@@ -37,7 +37,13 @@ class="comment <%= comment.current_vote ? (comment.current_vote[:vote] == 1 ?
       <% if comment.anon %>
         <a class="new_user">Anonymous</a>
       <% elsif comment.user %>
-        <a class="new_user"><%= comment.user.username %></a>
+        <a class="new_user registered"><%= comment.user.username %></a>
+        <% if comment.user.is_admin? %>
+          (ADMIN)
+        <% elsif comment.user.is_moderator? %>
+          (MOD)
+        <% end %>
+      
       <% end %>
 
       <% if comment.hat %>

@@ -79,6 +79,7 @@ GEM
     raindrops (0.13.0)
     rake (10.4.2)
     rdiscount (2.1.7.1)
+    recaptcha (0.4.0)
     riddle (1.5.11)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -124,6 +125,10 @@ DEPENDENCIES
   pg
   rails (= 4.1.8)
   rdiscount
+  recaptcha
   thinking-sphinx (~> 3.1.2)
   uglifier (>= 1.3.0)
   unicorn
+
+BUNDLED WITH
+   1.10.6

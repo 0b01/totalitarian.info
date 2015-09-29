@@ -78,37 +78,9 @@
   <% end %>
 
   <div class="boxline markdown_help_toggler">
-    <a href="#" id="story_guidelines_toggler">
-      Story submission guidelines
-    </a>
-    <div id="story_guidelines" style="<%= show_guidelines?? "" :
-    "display: none;" %>">
-      <div style="float: right;">
-      <a href="javascript:window.location=%22<%= Rails.application.root_url %>stories/new?url=%22+encodeURIComponent(document.location)+%22&title=%22+encodeURIComponent(document.title)"
-      style="border: 1px solid #ddd; padding: 0.5em; background-color:
-      #f8f8f8; line-height: 1.5em; margin-left: 1em;">-> <%= Rails.application.name %></a>
-      </div>
-      <ul>
-
-        <li><p>
-        To submit a page you're viewing in your browser to <%= Rails.application.name %>, drag the bookmarklet to the right
-        to your bookmark bar.
-        </p></li>
-        
-        <li><p>
-        Rules: <strong>I don't know. Use good judgement for now</strong>
-        </p></li>
-
-      </ul>
-    </div>
+    <% if !@user %>
+      <%= recaptcha_tags %>
+    <% end %>
   </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $("#story_fetch_title").click(function() {
-      Lobsters.fetchURLTitle($(this), $("#story_url"), $("#story_title"), $("#story_description"));
-      return false;
-    });
-  });
-</script>

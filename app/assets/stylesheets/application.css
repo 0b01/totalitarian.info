@@ -577,6 +577,11 @@ li .byline a.new_user {
     color: #117743;
     font-weight: bold;
 }
+span.registered, a.registered,
+li .byline a.registered {
+    color: #999943;
+    font-weight: bold, italic;
+}
 span.inactive_user, a.inactive_user,
 li .byline a.inactive_user {
 	color: gray;

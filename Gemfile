@@ -27,6 +27,7 @@ gem "rdiscount"
 
 # for parsing incoming mail
 gem "mail"
+gem "recaptcha", :require => "recaptcha/rails"
 
 # group :test, :development do
 #   gem "rspec-rails", "~> 2.6"

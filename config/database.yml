@@ -1,30 +1,26 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: ec2-54-163-234-163.compute-1.amazonaws.com
+  host: ec2-50-16-229-91.compute-1.amazonaws.com
   pool: 5
-  database: dtun5sg5koo2d
-  username: gdtlvizuwtunqi
-  password: HznbJoe9cUkFhgEW23evZiON36
-
-
-
+  database: dactfsmgpbtmge
+  username: tsowomyqcjnhqg
+  password:  tu61zm6Q-e_ZOVS7kQ7ZsM5m4W
 
 development:
   adapter: postgresql
   encoding: unicode
-  host: ec2-54-163-234-163.compute-1.amazonaws.com
+  host: ec2-50-16-229-91.compute-1.amazonaws.com
   pool: 5
-  database: dtun5sg5koo2d
-  username: gdtlvizuwtunqi
-  password: HznbJoe9cUkFhgEW23evZiON36
-
+  database: dactfsmgpbtmge
+  username: tsowomyqcjnhqg
+  password:  tu61zm6Q-e_ZOVS7kQ7ZsM5m4W
 
 production:
   adapter: postgresql
   encoding: unicode
-  host: ec2-54-163-234-163.compute-1.amazonaws.com
+  host: ec2-50-16-229-91.compute-1.amazonaws.com
   pool: 5
-  database: dtun5sg5koo2d
-  username: gdtlvizuwtunqi
-  password: HznbJoe9cUkFhgEW23evZiON36
+  database: dactfsmgpbtmge
+  username: tsowomyqcjnhqg
+  password:  tu61zm6Q-e_ZOVS7kQ7ZsM5m4W
